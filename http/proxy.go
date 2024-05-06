@@ -55,7 +55,7 @@ func (h *Proxy) Initialize(router Dialer) {
 		// cant possibly fail right? :)
 		dPort, _ := strconv.Atoi(dstPort)
 
-		// services.Ports should map 80 into http, 443 into https and so on
+		// services.Ports should map 80 into http, 447 into https and so on
 		r.URL.Scheme = services.Ports[dPort]
 	}
 

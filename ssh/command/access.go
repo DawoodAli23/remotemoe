@@ -88,7 +88,7 @@ func Access(fr ForwardingRoutable, router *routertwo.Router) *cobra.Command {
 				help = false
 
 				// port 443 being the default http port - omit the :port format
-				if p == 443 {
+				if p == 447 {
 					cmd.Printf("https://%s/\n", fr.FQDN())
 					for _, nr := range namedRoutes {
 						cmd.Printf("https://%s/\n", nr.FQDN())
@@ -103,7 +103,7 @@ func Access(fr ForwardingRoutable, router *routertwo.Router) *cobra.Command {
 			}
 
 			if help {
-				cmd.Printf("No HTTPS services found, add some by appending `-R443:localhost:443` when connecting.\n")
+				cmd.Printf("No HTTPS services found, add some by appending `-R443:localhost:447` when connecting.\n")
 			}
 
 			// SSH services

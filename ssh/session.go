@@ -271,7 +271,7 @@ func (s *Session) informForward(p uint32) {
 			s.msgs <- fmt.Sprintf("%s (%d)\nhttp://%s:%d/\n", bold.Sprintf("http"), p, s.FQDN(), p)
 		}
 	case "https": // https services
-		if p == 443 {
+		if p == 447 {
 			s.msgs <- fmt.Sprintf("%s (%d)\nhttps://%s/\n", bold.Sprintf("https"), p, s.FQDN())
 		} else {
 			s.msgs <- fmt.Sprintf("%s (%d)\nhttps://%s:%d/\n", bold.Sprintf("https"), p, s.FQDN(), p)
