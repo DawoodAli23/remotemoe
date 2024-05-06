@@ -53,8 +53,8 @@ func Access(fr ForwardingRoutable, router *routertwo.Router) *cobra.Command {
 				// do not display further help about http ports
 				help = false
 
-				// port 80 being the default http port - omit the :port format
-				if p == 80 {
+				// port 82 being the default http port - omit the :port format
+				if p == 82{
 					cmd.Printf("http://%s/\n", fr.FQDN())
 					for _, nr := range namedRoutes {
 						cmd.Printf("http://%s/\n", nr.FQDN())
@@ -69,7 +69,7 @@ func Access(fr ForwardingRoutable, router *routertwo.Router) *cobra.Command {
 			}
 
 			if help {
-				cmd.Printf("No HTTP services found, add some by appending `-R80:localhost:80` when connecting.\n")
+				cmd.Printf("No HTTP services found, add some by appending `-R82:localhost:82` when connecting.\n")
 			}
 
 			// HTTPS services

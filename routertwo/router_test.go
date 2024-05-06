@@ -64,7 +64,7 @@ func TestReplace(t *testing.T) {
 	}
 
 	// so, we should be able to dial our dummy, and receive an error
-	_, err = router.DialContext(context.TODO(), "tcp", "dummy.remote.moe:80")
+	_, err = router.DialContext(context.TODO(), "tcp", "dummy.remote.moe:82")
 	if !errors.Is(err, errDummy) {
 		t.Fatalf("we did not expect error: %s", err)
 	}
@@ -76,12 +76,12 @@ func TestRestoreDatabase(t *testing.T) {
 		t.Fatalf("unable to restore database: %s", err)
 	}
 
-	_, err = r.DialContext(context.TODO(), "tcp", "dummy.remote.moe:80")
+	_, err = r.DialContext(context.TODO(), "tcp", "dummy.remote.moe:82")
 	if !errors.Is(err, ErrOffline) {
 		t.Fatalf("we expected this host to be offline")
 	}
 
-	_, err = r.DialContext(context.TODO(), "tcp", "blarh.remote.moe:80")
+	_, err = r.DialContext(context.TODO(), "tcp", "blarh.remote.moe:82")
 	if !errors.Is(err, ErrNotFound) {
 		t.Fatalf("this host should not exist")
 	}
@@ -106,7 +106,7 @@ func TestRace(t *testing.T) {
 	for i := 0; i < 5; i++ {
 
 		g.Go(func() error {
-			_, err := router.DialContext(context.TODO(), "tcp", "dummy.remote.moe:80")
+			_, err := router.DialContext(context.TODO(), "tcp", "dummy.remote.moe:82")
 			if !errors.Is(err, errDummy) {
 				return fmt.Errorf("did not expect %w", err)
 			}
@@ -135,7 +135,7 @@ func TestAddRemoveName(t *testing.T) {
 	}
 
 	// we should now be able to dial the name, and end up with our dummyroute
-	_, err = router.DialContext(context.TODO(), "tcp", "hejhej.remote.moe:80")
+	_, err = router.DialContext(context.TODO(), "tcp", "hejhej.remote.moe:82")
 	if !errors.Is(err, ErrOffline) {
 		t.Fatalf("unexpected error from router: %s", err)
 	}
@@ -154,7 +154,7 @@ func TestAddRemoveName(t *testing.T) {
 	}
 
 	// now if we dial the same name, we should receive a notfound error
-	_, err = router.DialContext(context.TODO(), "tcp", "hejhej.remote.moe:80")
+	_, err = router.DialContext(context.TODO(), "tcp", "hejhej.remote.moe:82")
 	if !errors.Is(err, ErrNotFound) {
 		t.Fatalf("we expected a not found error: %s", err)
 	}
@@ -202,12 +202,12 @@ func TestRemoveNames(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	_, err = router.DialContext(context.TODO(), "tcp", "hello.remote.moe:80")
+	_, err = router.DialContext(context.TODO(), "tcp", "hello.remote.moe:82")
 	if !errors.Is(err, errDummy) {
 		t.Fatalf("expected errDummy, got: %s", err)
 	}
 
-	_, err = router.DialContext(context.TODO(), "tcp", "hello2.remote.moe:80")
+	_, err = router.DialContext(context.TODO(), "tcp", "hello2.remote.moe:82")
 	if !errors.Is(err, errDummy) {
 		t.Fatalf("expected errDummy, got: %s", err)
 	}
@@ -226,13 +226,13 @@ func TestRemoveNames(t *testing.T) {
 	}
 
 	// and now, we should not be able to dial them any more
-	_, err = router.DialContext(context.TODO(), "tcp", "hello2.remote.moe:80")
+	_, err = router.DialContext(context.TODO(), "tcp", "hello2.remote.moe:82")
 	if !errors.Is(err, ErrNotFound) {
 		t.Fatalf("expected ErrNotFound, got: %s", err)
 	}
 
 	// and now, we should not be able to dial them any more
-	_, err = router.DialContext(context.TODO(), "tcp", "hello.remote.moe:80")
+	_, err = router.DialContext(context.TODO(), "tcp", "hello.remote.moe:82")
 	if !errors.Is(err, ErrNotFound) {
 		t.Fatalf("expected ErrNotFound, got: %s", err)
 	}

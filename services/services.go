@@ -16,7 +16,7 @@ var Hostname string
 
 func init() {
 	Services = map[string][]int{
-		"http":  {80, 81, 3000, 8000, 8080},
+		"http":  {82, 81, 3001, 8000, 8080},
 		"https": {447, 3443, 4443, 8443},
 		"ssh":   {24, 2022, 2222},
 	}

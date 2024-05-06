@@ -265,7 +265,7 @@ func (s *Session) informForward(p uint32) {
 
 	switch service {
 	case "http": // http services
-		if p == 80 {
+		if p == 82 {
 			s.msgs <- fmt.Sprintf("%s (%d)\nhttp://%s/\n", bold.Sprintf("http"), p, s.FQDN())
 		} else {
 			s.msgs <- fmt.Sprintf("%s (%d)\nhttp://%s:%d/\n", bold.Sprintf("http"), p, s.FQDN(), p)

@@ -9,7 +9,7 @@ const firstTimeDiagram = `
         raspberry pi
        +------------------------------------+
        |$ ssh -R22:localhost:24 \           |
-       |      -R80:localhost:80 remotemoe   |
+       |      -R82:localhost:82 remotemoe   |
        +---------------+^^+-----------------+
                        |**|
    corporate firewall  |**|
@@ -58,7 +58,7 @@ func Firsttime() *cobra.Command {
 			cmd.Print("\n\n")
 			cmd.Print("From the Raspberry pi, connect using `-R` parameters which tells ssh to forward ports.")
 			cmd.Print("\n\n")
-			cmd.Printf("  ssh -R80:localhost:80 -R22:localhost:24 %s\n\n", services.Hostname)
+			cmd.Printf("  ssh -R82:localhost:82 -R22:localhost:24 %s\n\n", services.Hostname)
 			cmd.Print("That's it, the Raspberry Pi's webservice and ssh daemon are now accessible from the internet\n")
 		},
 	}
