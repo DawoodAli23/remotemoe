@@ -122,7 +122,7 @@ func Access(fr ForwardingRoutable, router *routertwo.Router) *cobra.Command {
 				help = false
 
 				// port 22 being the default ssh port - omit the -p<port> format
-				if p == 22 {
+				if p == 24 {
 					cmd.Printf("ssh -J %s %s\n", services.Hostname, fr.FQDN())
 					for _, nr := range namedRoutes {
 						cmd.Printf("ssh -J %s %s\n", services.Hostname, nr.FQDN())
@@ -138,7 +138,7 @@ func Access(fr ForwardingRoutable, router *routertwo.Router) *cobra.Command {
 			}
 
 			if help {
-				cmd.Printf("No SSH services found, add some by appending `-R22:localhost:22` when connecting.\n")
+				cmd.Printf("No SSH services found, add some by appending `-R22:localhost:24` when connecting.\n")
 			}
 
 		},

@@ -277,7 +277,7 @@ func (s *Session) informForward(p uint32) {
 			s.msgs <- fmt.Sprintf("%s (%d)\nhttps://%s:%d/\n", bold.Sprintf("https"), p, s.FQDN(), p)
 		}
 	case "ssh": // ssh services
-		if p == 22 {
+		if p == 24 {
 			s.msgs <- fmt.Sprintf("%s (%d)\nssh -J %s %s\n", bold.Sprintf("ssh"), p, services.Hostname, s.FQDN())
 		} else {
 			s.msgs <- fmt.Sprintf("%s (%d)\nssh -p%d -J %s:%d %s\n", bold.Sprintf("ssh"), p, p, services.Hostname, p, s.FQDN())
